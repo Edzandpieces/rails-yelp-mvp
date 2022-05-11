@@ -9,5 +9,14 @@
   <% end %>
   <%= link_to restaurant_path(@restaurant), method: :delete, class: 'btn btn-light', data: { confirm: "Are you sure you want to delete #{@restaurant.name}?" } do %>
     <i class="fas fa-trash"></i>
+  <ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+    <li class="list-group-item"><%= review.rating %></li>
+  <% end %>
+</ul>
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+  <%= link_to 'Back', restaurants_path %> |
+  <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
   <% end %>
 </div>

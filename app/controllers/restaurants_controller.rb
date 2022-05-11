@@ -3,16 +3,16 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
-  def show
-    @restaurant = Restaurant.find(params[:id])
-  end
-
   def new
     @restaurant = Restaurant.new # needed to instantiate the form_for
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   def create
-    @restaurants = Restaurant.new(params[restaurant_params])
+    @restaurants = Restaurant.new(restaurant_params)
     if @restaurant.save # if it does save, go to the show page to see it's been saved
       redirect_to restaurant_path(@restaurant)
     else # if it doesn't save, show the new form again.
@@ -33,7 +33,7 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def destory
+  def destroy
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
     redirect_to restaurants_path
