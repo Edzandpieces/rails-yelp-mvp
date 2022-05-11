@@ -11,9 +11,10 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to restaurant_path(@review.restaurant)
     else
-      render :index
+      render :new
     end
   end
+
   private
 
   def review_params

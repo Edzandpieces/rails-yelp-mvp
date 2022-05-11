@@ -12,11 +12,11 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurants = Restaurant.new(restaurant_params)
+    @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save # if it does save, go to the show page to see it's been saved
       redirect_to restaurant_path(@restaurant)
     else # if it doesn't save, show the new form again.
-      render 'new.html.erb'
+      render :new
     end
   end
 
