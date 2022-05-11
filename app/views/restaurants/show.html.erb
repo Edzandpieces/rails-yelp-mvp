@@ -1,0 +1,13 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+  <%= link_to 'Home', restaurants_path, class: 'btn btn-light' %>
+  <%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-light' do %>
+    <i class="fas fa-pencil-alt"></i>
+  <% end %>
+  <%= link_to restaurant_path(@restaurant), method: :delete, class: 'btn btn-light', data: { confirm: "Are you sure you want to delete #{@restaurant.name}?" } do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+</div>
